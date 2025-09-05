@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="container">
+        {% if statements %}
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>List</th>
+                    <th>Business</th>
+                    <th>amount</th>
+                    <th>catagory</th>
+                    <th>DateSaved</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody class="table-group-divider">
+                {% for item in statements %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td><stong>{{ item.name }}</stong></td>
+                    <td>{{ item.amount | currencyFormat }} Baht </td>
+                    <td>
+                        {% if item.catagory == "Income" %}
+                        <span class="badge bg-success">{{ item.catagory }}</span>
+                        {% else %}
+                        <span class="badge bg-danger">{{ item.catagory }}</span>
+                        {% endif %}
+                    </td>
+                    <td>{{ item.date }}</td>
+                    <td><a href="/delete/{{item.id}}" class="btn btn-danger">Delete</a></td>
+                    <td><a href="/edit/{{item.id}}" class="btn btn-warning">Edit</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="alert alert-danger mt-3" role="alert">
+            <h4 style="text-align: center;"> not found </h4>
+        </div>
+        {% endif %}
+    </div>
+
+{% endblock %}

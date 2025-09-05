@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md6 my-2">
+               <h3>System of monetary management</h3> 
+               <form action="/addStatement" method="POST">
+                <div class="form-group mt-3">
+                    <label for="date">Day</label>
+                    <input type="date" name="date" class="form-control">
+                </div>
+                                <div class="form-group mt-3">
+                    <label for="name">Business name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                                <div class="form-group mt-3">
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" class="form-control">
+                </div>                
+                                <div class="form-group mt-3">
+                    <label for="catagory">type</label>
+                    <select name="catagory" class="form-control">
+                        <option value="Income">Income</option>
+                        <option value="Loss">Loss</option>
+                    </select>
+                </div>
+                <input type="submit" value="Add" class="btn btn-success mt-3">
+            </from>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
